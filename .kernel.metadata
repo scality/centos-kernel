@@ -1,8 +1,5 @@
-0f7aaf77a461acfa8354aeca16ae3ac89798143a SOURCES/kernel-abi-whitelists-957.tar.bz2
-e01030ef3029e113eeff62bf9ea0dcf09b86d4e2 SOURCES/kernel-kabi-dw-957.tar.bz2
-db5b028779dc784f7f2a86f28bf10c3b6701c958 SOURCES/linux-3.10.0-957.27.2.el7.tar.xz
+d6914bd8d9b24dcd384d2da39fa8b04fa3de713a SOURCES/kernel-abi-whitelists-1062.tar.bz2
+e01030ef3029e113eeff62bf9ea0dcf09b86d4e2 SOURCES/kernel-kabi-dw-1062.tar.bz2
+229f495e0a3f2c6783527780ac608b0e62f370f1 SOURCES/linux-3.10.0-1062.el7.tar.xz
 95b9b811c7b0a6c98b2eafc4e7d6d24f2cb63289 SOURCES/rheldup3.x509
 d90885108d225a234a5a9d054fc80893a5bd54d0 SOURCES/rhelkpatch1.x509
-5a7d05a8298cf38d43689470e8e43230d8add0f9 SOURCES/centos-kpatch.x509
-c61172887746663d3bdd9acaa263cbfacf99e8b3 SOURCES/centos-ldup.x509
-6e9105eb51e55a46761838f289a917611cad8091 SOURCES/centos.cer
