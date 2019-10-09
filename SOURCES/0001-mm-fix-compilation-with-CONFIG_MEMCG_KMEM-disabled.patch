@@ -1,0 +1,41 @@
+From e58aeb67c287c2eed59c0b4bdcd8fdf54ee256b0 Mon Sep 17 00:00:00 2001
+From: Nicolas Trangez <ikke@nicolast.be>
+Date: Wed, 9 Oct 2019 13:44:21 +0000
+Subject: [PATCH] mm: fix compilation with `CONFIG_MEMCG_KMEM` disabled
+
+The `memcg_limit_mutex` mutex is used in code *not* protected by
+`CONFIG_MEMCG_KMEM`, so if we disable the feature, its declaration
+must go outside the `#ifdef`ed section.
+
+See: https://docs.google.com/document/d/1892PZs2ZdV4_JsSoFwC6WfoOHqKVirFci9r_6NAJzUU/edit?usp=sharing
+
+Signed-off-by: Nicolas Trangez <nicolas.trangez@scality.com>
+---
+ mm/memcontrol.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/mm/memcontrol.c b/mm/memcontrol.c
+index 16fe560..d8efcd2 100644
+--- a/mm/memcontrol.c
++++ b/mm/memcontrol.c
+@@ -2995,6 +2995,8 @@ static void __mem_cgroup_commit_charge(struct mem_cgroup *memcg,
+ 	memcg_check_events(memcg, page);
+ }
+ 
++static DEFINE_MUTEX(memcg_limit_mutex);
++
+ #ifdef CONFIG_MEMCG_KMEM
+ /*
+  * The memcg_slab_mutex is held whenever a per memcg kmem cache is created or
+@@ -3375,8 +3377,6 @@ static inline void memcg_resume_kmem_account(void)
+ 	current->memcg_kmem_skip_account--;
+ }
+ 
+-static DEFINE_MUTEX(memcg_limit_mutex);
+-
+ int __kmem_cache_destroy_memcg_children(struct kmem_cache *s)
+ {
+ 	struct kmem_cache *c;
+-- 
+1.8.3.1
+

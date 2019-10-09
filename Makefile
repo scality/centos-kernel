@@ -32,5 +32,6 @@ default: .rpms
 		-v $(PWD)/SRPMS:/home/build/kernel/SRPMS:Z \
 		--tmpfs /var/tmp \
 		--tmpfs /tmp \
-		"$(CONTAINER)"
+		"$(CONTAINER)" \
+		--without kabichk
 	touch $@
